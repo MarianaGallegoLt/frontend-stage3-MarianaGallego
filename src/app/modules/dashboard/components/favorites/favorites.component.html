@@ -1,0 +1,32 @@
+<div><h2 class="subtitle">Favorites</h2></div>
+
+<div class="favorites-list">
+  <div class="content" *ngFor="let show of favorites; let i = index">
+    <div>
+        <div>
+          <div>
+            <img [src]="show.poster">
+            <mat-icon (click)="removeFavorite(i)">delete_forever</mat-icon>
+          </div>
+          
+          <div>
+            <span><b>Title: {{show.title}}</b></span>
+          </div>
+
+          <div>
+            <span><b>Type: {{show.type}}</b></span>
+          </div>
+            
+          <div>
+            <span><b>Year: {{show.year}}</b></span>
+          </div>
+
+          <div>
+            <span><b>Registration Date: {{ show.registerDate | date : 'H:mm:ss' }}</b></span>
+          </div>
+        </div>
+    </div>
+    <div *ngIf="show.comment"><span><b>Comments: {{ show.comment }}</b></span></div>
+  </div>
+</div>
+<br>

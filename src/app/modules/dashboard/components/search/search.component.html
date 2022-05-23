@@ -1,0 +1,29 @@
+<div>
+  <h2 class="main-title">Media search</h2>
+</div>
+
+<div class="form" [formGroup]="movieForm">
+  <mat-form-field class="input" appearance="fill" required>
+    <mat-label>Options</mat-label>
+    <mat-select formControlName="option">
+      <mat-option *ngFor="let option of options" [value]="option.value">
+        {{ option.viewValue | titlecase }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="input" appearance="fill">
+    <mat-label>{{ 'Search' | modifyText: movieForm.controls['option'].value }}</mat-label>
+    <input matInput formControlName="title" />
+  </mat-form-field>
+
+  <mat-form-field class="input" appearance="fill">
+    <mat-label>Year</mat-label>
+    <input matInput formControlName="year" appYearFormat />
+  </mat-form-field>
+
+  <div class="search">
+    <button class="search-button"  mat-flat-button color="accent" [disabled]="!movieForm.valid" (click)="search()">Search</button>
+  </div>
+
+</div>

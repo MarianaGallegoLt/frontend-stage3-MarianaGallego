@@ -1,0 +1,13 @@
+<div class="dashboard">
+  <div class="dashboard__form">
+    <app-search (searchEmitter)="search($event)"></app-search>
+  </div>
+
+  <div class="dashboard__table" *ngIf="hasResults()">
+    <app-result [mediaList]="mediaList" (addToFavoritesEmitter)="addToFavorites($event)"></app-result>
+  </div>
+
+  <div class="dashboard__favorites" *ngIf="hasFavoriteShow()">
+    <app-favorites [favorites]="favoriteMedia" (deleteFavoriteEmitter)="deleteFavorite($event)"></app-favorites>
+  </div>
+</div>
